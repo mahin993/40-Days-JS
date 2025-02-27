@@ -12,4 +12,15 @@ let age = 32;
 let isStudent = false;
 let favoriteProgrammingLanguage = "JavaScript";
 
+// Task 2:
 console.log(name, age, isStudent, favoriteProgrammingLanguage);
+
+// Task 3:
+const name2 = "Mahin";
+const age2 = 32;
+const isStudent2 = false;
+const favoriteProgrammingLanguage2 = "JavaScript";
+
+const name2 = "Tuhin";
+console.log(name2);
+
