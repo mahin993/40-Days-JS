@@ -51,7 +51,37 @@ let result2 = calc(2);
 
 // Rest Parameter
 function calculateThis(x, y, ...rest){
-    console.log(x, y, rest);
+    // console.log(x, y, rest);
 }
 
 calculateThis(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+// The rest parameter can never be the first parameter
+
+// Nested Function
+function outer(){
+    // console.log("Outer");
+
+    return function inner(){
+        // console.log("Inner");
+    }
+
+    // inner()
+}
+
+let resFunc = outer()
+// console.log(resFunc())
+
+
+// Callback Function
+function foo(func){
+    console.log("foo");
+
+    func();
+}
+
+let func = function(){
+    console.log("buz");
+}
+
+foo(func);
