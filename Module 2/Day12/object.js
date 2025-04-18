@@ -122,7 +122,7 @@ let profile = {
 // console.log(profile.address.greeting());
 // profile.address.greeting()
 
-console.log(profile.salary);
+// console.log(profile.salary);
 if(!profile.salary){
   // console.log("Salary Doesn't exist");
 }
@@ -157,3 +157,65 @@ const obj2 = {name: "mango"}; // VB02
 obj1 = obj2
 // console.log(obj1 === obj2); // true
 // console.log(obj1 == obj2); // true
+
+
+
+// Static Method
+// const target = {p:1, q:2};
+// const source = {a:3, b:4};
+// const returnedObj = Object.assign(target, source);
+// console.log(returnedObj); // { p: 1, q: 2, a: 3, b: 4 }
+
+const target = {p:1, a:2};
+const source = {a:3, b:4};
+const returnedObj = Object.assign(target, source);
+// console.log(returnedObj); // { p: 1, a: 3, b: 4 }
+
+
+const object1 = {user: "mahin"};
+const object2 = Object.assign({}, object1);
+// console.log(object2);
+// console.log(object1 === object2); // false. Because, value same but both are Different memory locations
+
+
+
+
+const obj3 = {
+  a: 1,
+  b: {c: 2}
+}
+const obj4 = Object.assign({}, obj3);
+// console.log(obj4); // {a: 1, b: {c: 2}}
+// obj4.b.c = 3;
+
+// obj4.a = 100;
+
+// console.log(obj4.a); // 100
+// console.log(obj3.a); // 1
+
+// console.log(obj4.b.c) // 3
+// console.log(obj3.b.c) // 3
+
+
+
+
+// Object.entries
+const myObj = {
+  name: "Mahin",
+  age: 30
+}
+
+// console.log(Object.entries(myObj));
+
+// console.log(Object.freeze(myObj));
+
+// myObj.country = "Bangladesh"
+
+// console.log(Object.freeze(myObj));
+
+const entries = new Map([
+  ["foo", "bar"],
+  ["baz", 42]
+])
+
+console.log(Object.fromEntries(entries));
