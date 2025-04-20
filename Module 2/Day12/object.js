@@ -218,4 +218,118 @@ const entries = new Map([
   ["baz", 42]
 ])
 
-console.log(Object.fromEntries(entries));
+// console.log(Object.fromEntries(entries)); // { foo: 'bar', baz: 42 }
+
+
+
+
+//  Object Destructuring: Object Destructuring is extract values from an object and assign them to variables in a clean, short way.
+const student = {
+  id: 101,
+  name: "Akira",
+  age: 21,
+  address: {
+    city: "Tokyo",
+    zip: 100001,
+    country: "Japan",
+  },
+  scores: {
+    math: 85,
+    english: 90,
+    science: 78
+  }, 
+  subject: ["math", "english", "bangla", "science"]
+};
+
+const {id, name:userName, age, scores: {math, english, science}, countryCode="+88"} = student;
+// console.log(id, userName, age);
+
+const {subject, numberOfSubject = subject.length} = student
+// console.log(subject);
+// console.log(numberOfSubject);
+
+
+const users = {
+  profile: {
+    username: 'mahin_dev',
+    email: 'mahin@example.com'
+  },
+  perMonthSalary: [10000, 20000, 30000, 40000]
+};
+
+const {perMonthSalary, numberOfperMonthSalary = perMonthSalary.length} = users
+// console.log(perMonthSalary);
+// console.log(numberOfperMonthSalary);
+
+// Destructuring as Function’s Parameter
+function sendEmail({profile: {email}}){
+  console.log(`Send the email to the address of ${email}`);
+}
+
+// sendEmail(users)
+
+
+
+const getStudent = () => {
+  return {
+    name: 'John Williamson',
+    age: 9,
+    std: 3,
+    subjects: ['Maths', 'English', 'EVS'],
+    parents: {
+      father: 'Brown Williamson',
+      mother: 'Sophia',
+      email: 'john-parents@abcde.com'
+    },
+    address: {
+      street: '65/2, brooklyn road',
+      city: 'Carterton',
+      country: 'New Zealand',
+      zip: 5791
+    }
+  };
+};
+
+const {name: anotherName, subjects: anotherSubjects} = getStudent();
+
+// console.log(anotherName, anotherSubjects);
+
+
+// Destructuring in Loop (for ~ of loop)
+const students = [
+  {
+    'name': 'william',
+    'grade': 'A'
+  },
+
+  {
+    'name': 'Tom',
+    'grade': 'A+'
+  },
+
+  {
+    'name': 'Bob',
+    'grade': 'B'
+  },
+]
+
+for(let {name, grade} of students){
+  console.log(name, grade);
+}
+
+
+// Optional Chaining
+const student2 = {
+  name: "John",
+  parents: {
+    father: "Robert"
+  }
+};
+
+console.log(student2.parents.mother.name);
+// ❌ Error: Cannot read property 'name' of undefined
+
+console.log(student.parents.mother?.name);
+// ✅ Output: undefined (No error)
+
+
