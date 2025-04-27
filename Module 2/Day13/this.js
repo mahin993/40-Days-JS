@@ -106,5 +106,70 @@ const food = {
 } 
 
 const descFunc = food.getDesc()
-console.log(descFunc());
+// console.log(descFunc());
 
+
+
+const user = {
+  name: "mahin",
+  age: 32,
+  greetMe: function(){
+    return () => `Hello, This is ${this.name} and he is ${this.age} years old`
+  } 
+}
+
+const greet = user.greetMe()
+// console.log(greet());
+
+
+// Explicit Binding of "this" keyword
+/* There are 3 methods of explicit binding
+1) Call
+2) Apply
+3) Bind
+*/
+
+// 1) The Call Method
+function greeting(language){
+  // console.log(`${this.name} say hello in ${language}`);
+}
+
+const user1 = {
+  name: "Mahin"
+}
+
+greeting.call(user1, "English")
+
+
+function likes(hobby1, hobby2){
+  console.log(`${this.name} likes ${hobby1} and ${hobby2}`);
+}
+
+const persons = {
+  name: "Mahin"
+}
+
+// call
+likes.call(persons, "Teaching", "Dancing")
+
+// apply
+likes.apply(persons, ["Teaching", "Dancing"])
+
+// bind
+const hobby = likes.bind(persons, "Teaching", "Dancing")
+hobby()
+
+
+const Cartoon = function(name, animal){
+  this.name = name;
+  this.animal = animal;
+  this.log = function(){
+    console.log(`${this.name} is a ${this.animal}`);
+  }
+}
+
+const tomCartoon = new Cartoon("Tom", "Cat");
+tomCartoon.log()
+
+const jerryCartoon = new Cartoon("Jerry", "Mouse");
+jerryCartoon.log()
