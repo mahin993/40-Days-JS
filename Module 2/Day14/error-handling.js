@@ -94,7 +94,81 @@ function validateNumber(age){
   }
 }
 
-validateNumber(10)
+// validateNumber(10)
 
 
 
+
+
+
+// try...catch using rethrow
+function validateForm(formData){
+  try{
+    if(!formData.userName) throw new Error("Username is Mandatory");
+    if(!formData.email.includes("@")) throw new Error("Format of email is invalid")
+  } catch(error){
+    console.error(`Validation issues found. ${error.message}`)
+    throw error // rethrow
+  }
+}
+
+try{
+  // validateForm({userName: "mahin", email: "abcd"})
+} catch(error){
+  console.error(`Showing the error message creating by user. ${error.message}`)
+}
+
+
+
+
+
+// finally
+function processInformation(information){
+  try{
+    console.log("Processing Information");
+    if(!information) throw new Error("No information is available in process")
+    console.log("Information processed");
+    
+  } catch(error){
+    console.log(`Error: ${error.message}`);
+  } finally{
+    console.log(`Cleanup: closing database connection`);
+  }
+}
+
+// processInformation()
+
+
+// Custom Error
+function ValidationError(message){
+  this.name = "ValidationError"
+  this.message = message;
+  this.stack = new Error().stack;
+}
+
+// ValidationError.prototype = Object.create(Error.prototype);
+
+function validateCitizen(age){
+  if(age < 60){
+    throw new ValidationError("You are not a senior citizen")
+  }
+  return "You are a senior citizen"
+}
+
+try{
+  const message = validateCitizen(60)
+  console.log(message)
+} catch(error){
+  console.error(`${error.name}: ${error.message}`);
+}
+
+
+// Self Assignment Operator ?=
+
+let x;
+let y = 10;
+x ?= 20; // x is undefined, so x becomes 20
+y ?= 30; // y is already 10, so y remains 10
+
+console.log(x); // Output: 20
+console.log(y); // Output: 10
