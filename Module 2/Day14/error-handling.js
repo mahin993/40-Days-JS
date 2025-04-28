@@ -28,12 +28,73 @@ try {
 
 try{
   console.log("Execution starts here");
-  abc;
+  // abc;
 
   console.log("Execution ends here");
 } catch(err){
   console.error("An error has occured", err);
-  console.log(err.name);
-  console.log(err.message);
-  console.log(err.stack);
+  // console.log(err.name);
+  // console.log(err.message);
+  // console.log(err.stack);
 }
+
+
+
+
+
+// Real-World Use Case
+function divideNumbers(a, b){
+  try{
+    if(b === 0){
+      const err = new Error("Division by zero in not allowed");
+      throw err;
+    }
+
+    const result = a/b;
+    console.log(`The result is ${result}`)
+
+  } catch(error){
+    console.error(`Got a math error and ${error.message}`)
+  }
+}
+
+// divideNumbers(15, 5)
+// divideNumbers(15, 0)
+
+/********************************** */
+const person = {
+  name: "Mahin",
+  address: {
+    city: "Chandpur"
+  }
+}
+
+function getPostalCode(user){
+  try{
+    console.log((user.address.country.postalCode));
+  } catch(error){
+    console.error(`Error accessing property ${error.message}`)
+  }
+}
+
+// getPostalCode(person)
+
+
+
+function validateNumber(age){
+  try{
+    if(isNaN(age)){
+      throw new Error(`Invalid input. Age must be a number. Your input is ${age}`)
+    }
+
+    console.log(`Age is ${age}`);
+
+  } catch(error){
+    console.error(`Validation error. ${error.message}`)
+  }
+}
+
+validateNumber(10)
+
+
+
