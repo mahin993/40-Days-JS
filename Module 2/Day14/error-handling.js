@@ -157,18 +157,34 @@ function validateCitizen(age){
 
 try{
   const message = validateCitizen(60)
-  console.log(message)
+  // console.log(message)
 } catch(error){
-  console.error(`${error.name}: ${error.message}`);
+  // console.error(`${error.name}: ${error.message}`);
 }
 
 
 // Self Assignment Operator ?=
 
-let x;
-let y = 10;
-x ?= 20; // x is undefined, so x becomes 20
-y ?= 30; // y is already 10, so y remains 10
+// let x;
+// let y = 10;
 
-console.log(x); // Output: 20
-console.log(y); // Output: 10
+// x ??= 20; // x is undefined (nullish), so x becomes 20
+// y ??= 30; // y is already 10 (not null/undefined), so y remains 10
+
+// // console.log(x); // Output: 20
+// // console.log(y); // Output: 10
+
+
+
+
+
+
+
+
+//Task
+try {
+  let r = p + 50;
+  console.log(r);
+} catch (error) {
+  console.log("An error occurred:", error.name);
+}
