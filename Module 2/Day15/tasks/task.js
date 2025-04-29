@@ -28,3 +28,32 @@ console.log(nestedArr);
 
 const [first, second, third, , fourth, fifth=8] = nestedArr
 console.log(first, second, third, fourth, fifth);
+
+// T-007: Create an array containing the name of your favourite foods(10 foods). Destructure the 6th food element from the array using destructuring.
+const favoriteFruits = [ '🍎', '🍌', '🍇', '🍉', '🍓', '🍍', '🥭', '🍒', '🍑', '🍋' ]
+const [, , , , , sixth] = favoriteFruits
+console.log(sixth);
+
+// T-008: Take out the last 8 food items from the above array using the Array destructuring. Hint: rest parameter.
+const [tomato, banana, ...restElements] = favoriteFruits
+console.log(restElements);
+
+// T-009: Clone an Array(Shallow cloning)
+const favoriteFruitsCopy = [...favoriteFruits]
+console.log(favoriteFruitsCopy);
+console.log(favoriteFruitsCopy === favoriteFruits);
+
+//  T-010: Empty an array using its length property
+const nums = [23, 45, 67, 44]
+nums.length = 0
+console.log(nums);
+
+// T-011: Create an array of 10 elements(number 1 to 10). Resize the array to length 6 once you find the number 5 in that array. Hint: Use for-loop.
+const numbers = [1,2,3,4,5,6,7,8,9,10]
+for(let i=0; i<=numbers.length; i++){
+  if(numbers[i] === 5){
+    numbers.length = 6
+    break;
+  }
+}
+console.log(numbers);
