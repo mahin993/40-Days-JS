@@ -208,3 +208,257 @@ const b = [5, 6, 7]; // [5, 6, 7]
 
 const c = Array.of(2, true, 'test', {"name" : "Alex"}, [1,2,3]);
 console.log(c);
+
+
+
+/************************************************************************************** */
+
+// Array Iterator Method
+
+const customers = [
+  {
+    id: 1,
+    first_name: "John",
+    last_name: "Doe",
+    gender: "Male",
+    married: true,
+    age: 32,
+    expense: 1200,
+    purchased: ["shampoo", "Toys", "Book"]
+  },
+  {
+    id: 2,
+    first_name: "Emma",
+    last_name: "Smith",
+    gender: "Female",
+    married: true,
+    age: 27,
+    expense: 850,
+    purchased: ["Stick", "Blade"]
+  },
+  {
+    id: 3,
+    first_name: "Akira",
+    last_name: "Tanaka",
+    gender: "Male",
+    married: false,
+    age: 22,
+    expense: 1540,
+    purchased: ["Lipstick", "Nail Polish", "Bag", "Book"]
+  },
+  {
+    id: 4,
+    first_name: "Sophia",
+    last_name: "Lee",
+    gender: "Female",
+    married: true,
+    age: 82,
+    expense: 430,
+    purchased: ["Book"]
+  },
+  {
+    id: 5,
+    first_name: "Carlos",
+    last_name: "Garcia",
+    gender: "Male",
+    married: false,
+    age: 7,
+    expense: 970,
+    purchased: ["Toys"]
+  },
+  {
+    id: 6,
+    first_name: "Aisha",
+    last_name: "Khan",
+    gender: "Female",
+    married: true,
+    age: 29,
+    expense: 780,
+    purchased: ["Toys", "Stick"]
+  }
+];
+
+// 1. filter()
+// Get 'Senior Citizens' by filtering out other customers
+const seniorCustomers = customers.filter((customer) => {
+  return customer.age >= 60
+})
+
+console.log("Senior Customers List: ", seniorCustomers);
+console.log(seniorCustomers);
+
+
+
+// 2. map()
+// Transform to add title and full name
+const customersWithFullName = customers.map((customer) => {
+  let title = "";
+  if(customer.gender === "Male"){
+    title = "Mr."
+  } else if(customer.gender === "Female" && customer.married){
+    title = "Mrs."
+  } else{
+    title = "Miss."
+  }
+  
+  customer['full_name'] = `${title} ${customer.first_name} ${customer.last_name}`
+  return customer
+})
+console.log(customersWithFullName);
+
+
+
+// 3. reduce(): 
+// The average age of the Customers who have purchased the Item 'Book'.
+
+// arr.reduce(reducer(accumulator, currentValue, indexedDB, array), initialValue);
+// A reducer function is a function which is also called as callback function to be called on each element of the array.
+
+// const ret2 = reducer(accumulator, currentValue, indexedDB, array){
+//   // do something with accumulator and currentValue
+//   // you get a result
+//   // you return that result
+// }
+
+const arr = [1, 2, 3, 4, 5, 6, 7]
+const sum = arr.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log(sum);
+
+let count = 0;
+const total = customers.reduce((accumulator, customer) => {
+  if(customer.purchased.includes("Book")){
+    accumulator += customer.age;
+    count++;
+  }
+  return accumulator;
+}, 0);
+
+const average = Math.floor(total/count)
+console.log(`Customer average age Purchased Book: ${average}`);
+
+
+
+// 4. reduceRight(): 
+let number = [100, 40, 15];
+const subsResult = number.reduceRight((accumulator, currentValue) => {
+  return accumulator - currentValue;
+})
+
+console.log(subsResult);
+
+
+// 5. some()
+// Do you have a Young Customer (age less than 10 years)
+const hasYoungCustomer = customers.some((customer) => {
+  return customer.age < 10;
+})
+
+console.log("Has young Customer (Age < 10): ", hasYoungCustomer);
+
+
+// 6. every()
+// Every customer is married
+const isAllMarried = customers.every((customer) => {
+  return customer.married;
+})
+
+console.log("All Customer Married ?", isAllMarried);
+
+
+// 7. find()
+// Find the youngest customer
+const foundYoungCustomer = customers.find((customer) => {
+  return customer.age < 10;
+})
+
+console.log("Found Young Customer (Age < 10): ", foundYoungCustomer);
+
+
+// 8. findIndex()
+const youngCustomerIndex = customers.findIndex((customer) => {
+  return customer.age < 10;
+})
+
+console.log("Found Young Customer Index: ", youngCustomerIndex);
+
+
+// 9. findLastIndex()
+const nums = [1, 2, 3, 4, 5];
+console.log(nums.findLastIndex(n => n % 2 === 1)); // 4
+
+
+
+// 14. Array Method Chaining
+// Use Case: Get the total amount spent by Married Customers
+
+// filter()
+// map()
+// reduce()
+
+// const marriedCustomers = customers.filter((customer) => {
+//   return customer.married;
+// });
+// const expenseMapped = marriedCustomers.map((marriedCustomer) => {
+//   return marriedCustomer.expense;
+// });
+// const totalExpense = expenseMapped.reduce((accumulator, expense) => {
+//   return accumulator + expense;
+// }, 0);
+// console.log("Total expense of Married Customers in USD: ", totalExpense);
+
+const totalExpense = customers.filter((customer) => {
+  return customer.married;
+})
+.map((marriedCustomer) => {
+  return marriedCustomer.expense;
+})
+.reduce((accumulator, expense) => {
+  return accumulator + expense;
+}, 0);
+
+console.log("Total expense of Married Customers in USD: ", totalExpense);
+
+
+{
+//  10. forEach()
+  const arr = [1, 2, 3, 4, 6];
+  let sum = 0;
+  arr.forEach((element) => {
+    sum += element;
+  })
+  console.log("Sum using forEach:", sum);
+}
+
+{
+  // 11. entries()
+  const arr = [1, 2, 3, 4, 5, 6];
+  const arrItr = arr.entries();
+  // console.log("Array Iterator", arrItr.next().value); //  [0, 1]
+  for(const [index, value] of arrItr){
+    console.log(index, value);
+  }
+}
+
+{
+  // 12. values()
+  const arr = [1, 2, 3, 4, 5, 6];
+  const arrItr = arr.values();
+  for(const value of arrItr){
+    console.log(value);
+  }
+
+}
+
+
+
+{
+  // 13. flatMap()
+  const arr = [1, 2, 3, 4, 5, 6];
+  console.log("Simple map:", arr.map(item => item * 2)); // [1, 2, 3, 4, 5, 6]
+  console.log("Simple flatmap:", arr.flatMap(item => item * 2)); // [1, 2, 3, 4, 5, 6]
+  console.log("Complex Map", arr.map(item => [item * 2])); // [[1], [2], [3], [4], [5], [6]]
+  console.log("Complex flatmap", arr.flatMap(item => [item * 2])); // [1, 2, 3, 4, 5, 6]
+}
