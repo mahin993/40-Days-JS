@@ -91,3 +91,92 @@ console.log(isPartialMatch); // true
 const filled = nums.fill("one", 2, 3)
 console.log(filled);
 }
+
+
+/***************************************************************************************** */
+const employees = [
+  { id: 1, name: "Alice", departmentId: 1, salary: 5000 },
+  { id: 2, name: "Bob", departmentId: 2, salary: 7000 },
+  { id: 3, name: "Charlie", departmentId: 3, salary: 4500 },
+  { id: 4, name: "Diana", departmentId: 1, salary: 5500 },
+  { id: 5, name: "Edward", departmentId: 2, salary: 8000 },
+  { id: 6, name: "Fiona", departmentId: 4, salary: 6000 },
+  { id: 7, name: "George", departmentId: 3, salary: 5200 },
+  { id: 8, name: "Helen", departmentId: 4, salary: 7200 },
+  { id: 9, name: "Ian", departmentId: 2, salary: 4800 },
+  { id: 10, name: "Jane", departmentId: 1, salary: 5100 },
+];
+
+
+
+const departments = [
+  { id: 1, name: "HR" },
+  { id: 2, name: "Engineering" },
+  { id: 3, name: "Marketing" },
+  { id: 4, name: "Sales" },
+];
+
+// T-021: Can you filter employees who work in the "Engineering" department?
+const {id:engineeringId} = departments.find(({name})=> name === "Engineering")
+const employeeId = employees.filter(({departmentId})=> departmentId === engineeringId)
+console.log(employeeId); 
+
+//  T-022: Create a new array that combines employee names and department names in the format: "Alice (HR)".
+const result = employees.map(({ name, departmentId }) => {
+  const { name: deptName } = departments.find(({ id }) => id === departmentId);
+  return `${name} (${deptName})`;
+});
+
+console.log(result);
+
+
+// T-023: Find the highest salary among employees.
+const highestSalaryEmployees = employees.reduce((max, employee)=> employee.salary > max ? employee.salary : max, 0)
+console.log(highestSalaryEmployees);
+
+
+// T-024: Check if there is at least one employee in the "Sales" department.
+const salesDept = departments.find(dept => dept.name === "Sales")
+
+const hasSalesEmployee = employees.some(employee => employee.departmentId === salesDept.id)
+console.log("Is there at least one employee in sales?", hasSalesEmployee);
+
+//  T-025: Write a function to filter employees earning more than 6000.
+const earningMore6000 = employees.filter(employee => employee.salary > 6000)
+console.log(earningMore6000);
+
+
+// T-026: Create an array of employee names only.
+const empName = employees.map(employee => employee.name)
+console.log(empName);
+
+// T-027: Calculate the total salary of all employees
+const empTotalSalary = employees.reduce((accumulator, employee) => {
+  return accumulator += employee.salary
+}, 0)
+
+console.log("Total Salary of Employees is: ", empTotalSalary);
+
+// T-028: Is there any employee earning less than 5000?
+const earningBelow5000 = employees.some(employee => employee.salary < 5000)
+console.log("Is there any employee earning less than 5000?", earningBelow5000);
+
+// T-029: Find the first employee who earns exactly 5100.
+const salary5100 = employees.find(emp => emp.salary === 5100)
+console.log("Employee who earns exactly 5100: ", salary5100);
+
+// T-030: Find the last employee in the "HR" department.
+const deptHR = departments.find(emp => emp.name === "HR");
+const lastEmpHR = employees.findLast(employee => employee.departmentId === deptHR.id)
+console.log(lastEmpHR);
+
+//  T-031: Find the first employee in the "Marketing" department.
+const deptMarketing = departments.find(emp => emp.name === "Marketing");
+const firstEmpMarketing = employees.find(employee => employee.departmentId === deptMarketing.id)
+console.log(firstEmpMarketing);
+
+//  T-035: Log each employee's name and department name to the console.
+employees.forEach(employee => {
+  const departmentName = departments.find(dept => dept.id === employee.departmentId)?.name;
+  console.log(`${employee.name} works in ${departmentName} department`);
+});
