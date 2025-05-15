@@ -180,3 +180,28 @@ employees.forEach(employee => {
   const departmentName = departments.find(dept => dept.id === employee.departmentId)?.name;
   console.log(`${employee.name} works in ${departmentName} department`);
 });
+
+
+//  T-036: Extract all employee names into a single array.
+const employeeNames = employees.map(emp => emp.name)
+console.log(employeeNames);
+
+
+//  T-037: Increment each employee's salary by 10%
+const incrementEmployeeSalary = employees.map(emp => {
+  const increment10 = emp.salary * 0.1;
+  const totalSalaryWithIncrement10 = emp.salary + increment10;
+  return totalSalaryWithIncrement10;
+})
+console.log(incrementEmployeeSalary);
+
+//  T-038: Assume each employee can have multiple skills. Create an array of employee skills and flatten them. Example: [{name: "Alice", skills: ["Excel", "Management"]}, ...].
+
+
+// T-039: Find the total salary of all employees working in the "Engineering" department.
+const engineeringDept = departments.find(emp => emp.name === "Engineering");
+const engEmployees = employees.filter(emp => emp.departmentId === engineeringDept.id);
+const engEmployeesTotalSalary = engEmployees.reduce((sum, emp) => sum += emp.salary, 0)
+console.log(`Total salary of all employees working in the engineering dept: ${engEmployeesTotalSalary}`);
+
+
