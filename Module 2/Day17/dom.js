@@ -3,7 +3,6 @@
  - Understanding DOM Types    
  - Accessing DOM
 
-
   - Understanding DOM Types 
  There are 6 types of DOM:
         1. Document: Represents the entire page and it is the root node of the DOM tree.
@@ -20,3 +19,47 @@
         6. NameNodeMap: A collection of Attribute.
 
  */
+
+        //  - Accessing DOM
+        // 1. Access By id
+      let titleElem = document.getElementById("heading");
+      console.log(titleElem);
+
+       // 2. Access By class
+       let infoElems = document.getElementsByClassName("info");
+       console.log(infoElems);
+       [...infoElems].forEach(elem => console.log(elem))
+
+        // 3. Access By tag name
+        let pTagElems = document.getElementsByTagName("p");
+        console.log(pTagElems);
+
+        // Access By Selectors (Query Selector & Query Selector All)
+        // 4) Query Selector: querySelector(). It is giving the first matching element node with the selector that will be passing as an argument.
+        let paragraph = document.querySelector("p.info");
+        console.log(paragraph);
+
+
+        let hOne = document.querySelector("#heading");
+console.log("Using Query Selector:", hOne);
+
+        
+        // 5) Query SelectorAll: It is giving all matching element node with the selector that will be passing as an argument. Return a NodeList.
+        let paragraphs = document.querySelectorAll("p.info");
+        console.log("Using Query SelectorAll:", paragraphs);
+
+/******************************************************* */
+
+// DOM Access Methods:
+/**
+    1. getElementById(id)
+    2. getElementByClassName(className)
+    3. getElementByTagName(tagName)
+    4. querySelector(cssSelector)
+    5. querySelectorAll(cssSelector)
+*/
+
+        
+
+        
+
