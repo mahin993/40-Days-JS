@@ -1,0 +1,123 @@
+/**
+ - What is DOM ?
+ - Understanding DOM Types    
+ - Accessing DOM
+
+  - Understanding DOM Types 
+ There are 6 types of DOM:
+        1. Document: Represents the entire page and it is the root node of the DOM tree.
+        console.log(document);
+
+        2. Node: Node is a generic term of any or elements or items of DOM tree. (Element Node, Text Node, Attribute Node)
+
+        3. Element: A specific type of node that represents HTML tags/elements
+        4. NodeList: An array of Nodes. It is an order list.
+
+        5. Attribute: Represents the attribute of a node.
+            <img src="/" alt="some image" />
+
+        6. NameNodeMap: A collection of Attribute.
+
+ */
+
+        //  - Accessing DOM
+        // 1. Access By id
+      let titleElem = document.getElementById("heading");
+      console.log(titleElem);
+
+       // 2. Access By class
+       let infoElems = document.getElementsByClassName("info");
+       console.log(infoElems);
+       [...infoElems].forEach(elem => console.log(elem))
+
+        // 3. Access By tag name
+        let pTagElems = document.getElementsByTagName("p");
+        console.log(pTagElems);
+
+        // Access By Selectors (Query Selector & Query Selector All)
+        // 4) Query Selector: querySelector(). It is giving the first matching element node with the selector that will be passing as an argument.
+        let paragraph = document.querySelector("p.info");
+        console.log(paragraph);
+
+
+        let hOne = document.querySelector("#heading");
+console.log("Using Query Selector:", hOne);
+
+        
+        // 5) Query SelectorAll: It is giving all matching element node with the selector that will be passing as an argument. Return a NodeList.
+        let paragraphs = document.querySelectorAll("p.info");
+        console.log("Using Query SelectorAll:", paragraphs);
+
+/******************************************************* */
+
+// DOM Access Methods:
+/**
+    1. getElementById(id)
+    2. getElementByClassName(className)
+    3. getElementByTagName(tagName)
+    4. querySelector(cssSelector)
+    5. querySelectorAll(cssSelector)
+*/
+
+function highlightText() {
+  const elements = document.querySelectorAll("p.info");
+  elements.forEach((element) => {
+    element.style.backgroundColor = "Yellow";
+  });
+}
+
+
+function filterList() {
+  const inputElem = document.getElementById('searchInput');
+  const input = inputElem.value;
+  
+  const items = document.querySelectorAll("ul#itemList li")
+  
+  items.forEach((items) => {
+    items.style.display = items.innerText.toLowerCase().includes(input.toLowerCase()) ? "block" : "none"
+  });
+}
+        
+/************************************************************************ */
+
+
+// Task
+
+//  Task- 1:
+const text = document.querySelector("#text").textContent;
+
+// Convert text to lowercase, remove punctuation, and split into words
+const words = text.toLowerCase().replace(/[^\w\s]/g, "").split(" ");
+console.log(words);
+
+const count = {};
+let maxWord = "";
+let maxCount = 0;
+
+// Count frequency of each word
+words.forEach(word => {
+  count[word] = (count[word] || 0) + 1;
+  if (count[word] > maxCount) {
+    maxCount = count[word];
+    maxWord = word;
+  }
+});
+console.log(count);
+
+// Display result
+const output =document.querySelector("#output").textContent = `Most frequent word: "${maxWord}" (${maxCount} times)`;
+
+
+
+// task- 2:
+const carItems = document.querySelectorAll("ul#cars li");
+carItems.forEach((item, index) => {
+  if(index % 2 === 0){
+    item.style.color = "white";
+    item.style.backgroundColor = "black";
+  } else{
+    item.style.color = "black";
+    item.style.backgroundColor = "white";
+  }
+});
+
