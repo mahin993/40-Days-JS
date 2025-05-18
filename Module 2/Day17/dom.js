@@ -59,7 +59,65 @@ console.log("Using Query Selector:", hOne);
     5. querySelectorAll(cssSelector)
 */
 
-        
+function highlightText() {
+  const elements = document.querySelectorAll("p.info");
+  elements.forEach((element) => {
+    element.style.backgroundColor = "Yellow";
+  });
+}
 
+
+function filterList() {
+  const inputElem = document.getElementById('searchInput');
+  const input = inputElem.value;
+  
+  const items = document.querySelectorAll("ul#itemList li")
+  
+  items.forEach((items) => {
+    items.style.display = items.innerText.toLowerCase().includes(input.toLowerCase()) ? "block" : "none"
+  });
+}
         
+/************************************************************************ */
+
+
+// Task
+
+//  Task- 1:
+const text = document.querySelector("#text").textContent;
+
+// Convert text to lowercase, remove punctuation, and split into words
+const words = text.toLowerCase().replace(/[^\w\s]/g, "").split(" ");
+console.log(words);
+
+const count = {};
+let maxWord = "";
+let maxCount = 0;
+
+// Count frequency of each word
+words.forEach(word => {
+  count[word] = (count[word] || 0) + 1;
+  if (count[word] > maxCount) {
+    maxCount = count[word];
+    maxWord = word;
+  }
+});
+console.log(count);
+
+// Display result
+const output =document.querySelector("#output").textContent = `Most frequent word: "${maxWord}" (${maxCount} times)`;
+
+
+
+// task- 2:
+const carItems = document.querySelectorAll("ul#cars li");
+carItems.forEach((item, index) => {
+  if(index % 2 === 0){
+    item.style.color = "white";
+    item.style.backgroundColor = "black";
+  } else{
+    item.style.color = "black";
+    item.style.backgroundColor = "white";
+  }
+});
 
