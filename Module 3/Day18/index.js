@@ -54,7 +54,27 @@ console.log(targetElem.nextElementSibling);
 
   const remove = document.getElementById('removeMe').remove();
 
-  
-  
-
 }
+
+
+{
+  // Read, Write, Remove and Check Attributes
+
+  // read
+  const imgElem = document.querySelector('img');
+  console.log(imgElem.getAttribute('src'));
+
+  // write
+  imgElem.setAttribute("src", "m.JPG")
+  imgElem.setAttribute("alt", "friends")
+
+  // remove
+  // imgElem.removeAttribute("height")
+  // imgElem.removeAttribute("width")
+
+  // check
+  const hasAttribute = imgElem.hasAttribute("height");
+  console.log(hasAttribute);
+}
+
+
