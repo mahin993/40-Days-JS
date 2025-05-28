@@ -77,4 +77,30 @@ console.log(targetElem.nextElementSibling);
   console.log(hasAttribute);
 }
 
+{
+// Traversing/Navigating DOM: 
+// parentElement and parentNode
+const span = document.getElementById('text');
+console.log("Parent Element", span.parentElement.parentElement);
+console.log("Parent Node", span.parentNode.parentNode);
 
+// children and childnode
+const mainElem = document.getElementById("main-id");
+console.log("Children", mainElem.children);
+console.log("Child Nodes", mainElem.childNodes);
+
+// firstChild and firstElementChild
+console.log(mainElem.firstChild);
+console.log(mainElem.firstElementChild);
+
+// nextSibling and nextElementSibling
+const ulElem = document.getElementById("list")
+console.log(ulElem.nextSibling);
+console.log(ulElem.nextElementSibling);
+
+// previousSibling and previousElementSibling
+console.log(ulElem.previousSibling);
+console.log(ulElem.previousElementSibling);
+
+
+}
