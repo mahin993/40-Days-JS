@@ -85,13 +85,13 @@ console.log("Parent Element", span.parentElement.parentElement);
 console.log("Parent Node", span.parentNode.parentNode);
 
 // children and childnode
-const mainElem = document.getElementById("main-id");
-console.log("Children", mainElem.children);
-console.log("Child Nodes", mainElem.childNodes);
+const mainDivElem = document.getElementById("main-id");
+console.log("Children", mainDivElem.children);
+console.log("Child Nodes", mainDivElem.childNodes);
 
 // firstChild and firstElementChild
-console.log(mainElem.firstChild);
-console.log(mainElem.firstElementChild);
+console.log(mainDivElem.firstChild);
+console.log(mainDivElem.firstElementChild);
 
 // nextSibling and nextElementSibling
 const ulElem = document.getElementById("list")
@@ -101,6 +101,35 @@ console.log(ulElem.nextElementSibling);
 // previousSibling and previousElementSibling
 console.log(ulElem.previousSibling);
 console.log(ulElem.previousElementSibling);
+}
 
+
+
+{
+  // Manipulating Style
+  const pElem = document.getElementById('p-id');
+  console.log(pElem.style);
+
+  const mainDivElem = document.getElementById("main-id");
+  // mainDivElem.className = "secondary-class"
+  // mainDivElem.classList.add("secondary-class")
+  // mainDivElem.classList.remove("main-class")
+  // mainDivElem.classList.toggle("main-class")
+  // mainDivElem.classList.toggle("main-class")
+  mainDivElem.classList.replace("main-class", "secondary-class")
+  console.log(mainDivElem.classList);
+  console.log("Does it have test?", mainDivElem.classList.contains("main-class"));
+}
+
+{
+  // Controlling Visibility
+  const mainDivElem = document.getElementById("main-id");
+  // mainDivElem.style.display = "block"
+
+  // mainDivElem.style.display = "hidden"
+
+  mainDivElem.style.opacity = "0.5"
 
 }
+
+
